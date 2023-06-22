@@ -36,7 +36,7 @@ class OfferingPage extends StatefulWidget {
 }
 
 class _OfferingPageState extends State<OfferingPage> {
-  String _offerings="Select Offerings >>>";
+  String _offerings='Select Offerings ->';
   String _amnt="\$10";
   String successtxt="",errtxt="";
 
@@ -452,9 +452,10 @@ class _OfferingPageState extends State<OfferingPage> {
 
     SharedPreferences sp=await SharedPreferences.getInstance();
 
-    sp.setString("offering_type",_offerings);
+    sp.setString("offering_type",dropdownvalue1);
     sp.setString("amount",_amnt);
-    eventid["offer_type"]=_offerings.toString();
+   // print(_offerings.toString());
+    eventid["offer_type"]=dropdownvalue1.toString();
     eventid["offer_amt"]=_amnt.toString();
     Navigator.pushNamed(context, "/checkout",arguments: eventid)
     /*Navigator.of(context).push(MaterialPageRoute(
