@@ -388,7 +388,7 @@ class _ChangePwdPageState extends State<ChangePwdPage> {
     height: 15,
     ),
     (errtxt!="" && errtxt!=null)?Text(errtxt,
-    style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 12),
+    style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 12,),
     ):(successtxt!="")?Text(successtxt,
     style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 12),
     ):Text("",

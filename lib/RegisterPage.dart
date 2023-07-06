@@ -78,10 +78,23 @@ class _RegisterPageState extends State<RegisterPage> {
     'Instagram',
   ];
   String teacher="";
-  String classgroup = '0-10 years';
+  String classgroup = 'Select Age(In Years)';
   var items4 = [
-    '0-10 years',
-    'Optional',
+    'Select Age(In Years)',
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
+    //'Optional',
    /* '9-12 years',
     '13-18 years',
     '19-25 years',*/
@@ -444,7 +457,7 @@ class _RegisterPageState extends State<RegisterPage> {
     DropdownButtonFormField(
     value: classgroup,
     validator: (value) {
-    if (value == null || value=="-") {
+    if (value == null || value=="Select Age(In Years)") {
     return 'Please select age';
     }
     return null;
@@ -547,7 +560,7 @@ class _RegisterPageState extends State<RegisterPage> {
     errtxt="";
     _formkey_1.currentState!.reset();
     _fullnamecontroller.clear();
-    classgroup="0-10 years";
+    classgroup="Select Age(In Years)";
     _teachercontroller.clear();
     _gender='Gender';
     });
@@ -598,7 +611,7 @@ class _RegisterPageState extends State<RegisterPage> {
     setState(()
     {
     _fullnamecontroller.clear();
-    classgroup="0-10 years";
+    classgroup="Select Age(In Years)";
     _teachercontroller.clear();
     _gender='Gender';
     });

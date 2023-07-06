@@ -52,7 +52,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
               children: [
                 CardForm(
                     formKey: formKey,
-                    card: card
+                  card: card
                 ),
                 Container(
                   child: ElevatedButton(

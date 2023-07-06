@@ -45,10 +45,12 @@ class _OfferingPageState extends State<OfferingPage> {
   String dropdownvalue1 = 'Select Offerings ->';
   var items1 = [
     'Select Offerings ->',
+    'Offering',
     'Tithe',
-    'Pastors Appreciation',
-    'Thanks Giving',
-    'Children Church',
+    'Pastor Appreciation',
+    'Thanksgiving Offering',
+    'Children\'s Church',
+    'Others'
   ];
   String referred_by = 'Select Amount ->';
   var referrence = [

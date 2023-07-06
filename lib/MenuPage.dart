@@ -316,15 +316,15 @@ class _MenuPageState extends State<MenuPage> {
                     ],
                   ),
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                     (errtxt!="" && errtxt!=null)?Text(errtxt,
-    style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 12),
+    style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 15),textAlign: TextAlign.center
     ):(successtxt!="")?Text(successtxt,
-    style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 12),
+    style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 15),textAlign: TextAlign.center
     ):Text("",
-    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
+    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),textAlign: TextAlign.center
     ),
     SizedBox(
     height: 10,
@@ -567,10 +567,10 @@ class _MenuPageState extends State<MenuPage> {
                       Helper.type="2";
                       Navigator.pushNamed(context, "/scanner");
                     }, */
-                        onPressed: () async {
+                        onPressed: ()  {
                           Helper.type="4";
-                          //Navigator.pushNamed(context, "/register",arguments: eventid);
-                          DateTime now = DateTime.now();
+                          Navigator.pushNamed(context, "/register",arguments: eventid);
+                          /*DateTime now = DateTime.now();
                           DateFormat formatter = DateFormat('M/d/y');
                           String formatted = formatter.format(now);
                           DateFormat formatter1 = DateFormat('jm');
@@ -631,7 +631,7 @@ class _MenuPageState extends State<MenuPage> {
 
                             });
 
-                          }
+                          }*/
                         },
                         child: Text(
                             "Event Entry"
@@ -712,7 +712,7 @@ class _MenuPageState extends State<MenuPage> {
 
                         },
                         child: Text(
-                            "Gift"
+                            "Giving/Gift"
                         ),
                         style: ElevatedButton.styleFrom(
                           primary: Colors.orangeAccent.shade200,
