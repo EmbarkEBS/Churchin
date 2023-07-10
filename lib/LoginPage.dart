@@ -225,9 +225,9 @@ class _LoginPageState extends State<LoginPage> {
     ),
 
     (errtxt!="" && errtxt!=null)?Text(errtxt,
-    style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 12),
+    style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 15),
     ):(successtxt!="")?Text(successtxt,
-    style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 12),
+    style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 15),
     ):Text("",
     style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
     ),

@@ -222,7 +222,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   sp.setBool("stay_signed",false);
                   sp.setInt("user_id",0);
                   Navigator.of(context).pushNamedAndRemoveUntil("/login",(route) => route.isFirst);*/
-                Navigator.pushNamed(context, "/change");
+                Navigator.pushNamed(context, "/change", arguments: eventid);
               },
             ),
             ListTile(
@@ -512,9 +512,9 @@ class _RegisterPageState extends State<RegisterPage> {
     height: 15,
     ),
     (errtxt!="" && errtxt!=null)?Text(errtxt,
-    style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 12),
+    style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 15),
     ):(successtxt!="")?Text(successtxt,
-    style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 12),
+    style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 15),
     ):Text("",
     style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
     ),
@@ -768,7 +768,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   sp.setBool("stay_signed",false);
                   sp.setInt("user_id",0);
                   Navigator.of(context).pushNamedAndRemoveUntil("/login",(route) => route.isFirst);*/
-                Navigator.pushNamed(context, "/change");
+                Navigator.pushNamed(context, "/change", arguments: eventid);
               },
             ),
             ListTile(
@@ -1053,9 +1053,9 @@ class _RegisterPageState extends State<RegisterPage> {
     height: 15,
     ),
     (errtxt!="" && errtxt!=null)?Text(errtxt,
-    style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 12),
+    style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 15),
     ):(successtxt!="")?Text(successtxt,
-    style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 12),
+    style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 15),
     ):Text("",
     style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
     ),

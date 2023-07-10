@@ -36,15 +36,15 @@ class OfferingPage extends StatefulWidget {
 }
 
 class _OfferingPageState extends State<OfferingPage> {
-  String _offerings='Select Offerings ->';
+  String _offerings='Select Giving ->';
   String _amnt="\$10";
   String successtxt="",errtxt="";
 
   final TextEditingController _othercontroller=TextEditingController();
   bool isShow=false,_isreadonly=true;
-  String dropdownvalue1 = 'Select Offerings ->';
+  String dropdownvalue1 = 'Select Giving ->';
   var items1 = [
-    'Select Offerings ->',
+    'Select Giving ->',
     'Offering',
     'Tithe',
     'Pastor Appreciation',
@@ -182,7 +182,7 @@ class _OfferingPageState extends State<OfferingPage> {
                   sp.setBool("stay_signed",false);
                   sp.setInt("user_id",0);
                   Navigator.of(context).pushNamedAndRemoveUntil("/login",(route) => route.isFirst);*/
-                  Navigator.pushNamed(context, "/change");
+                  Navigator.pushNamed(context, "/change", arguments: eventid);
                 },
               ),
               ListTile(
@@ -256,8 +256,8 @@ class _OfferingPageState extends State<OfferingPage> {
     value: dropdownvalue1,
    // dropdownColor: Colors.orange,
     validator: (value) {
-    if (value == null || value=="Select Offerings ->") {
-    return 'Please select offerings';
+    if (value == null || value=="Select Giving ->") {
+    return 'Please select Giving';
     }
     return null;
     },
@@ -434,9 +434,9 @@ class _OfferingPageState extends State<OfferingPage> {
     height: 15,
     ),
     (errtxt!="")?Text(errtxt,
-    style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 12),
+    style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 15),
     ):(successtxt!="")?Text(successtxt,
-    style: TextStyle(color: Colors.purple.shade900, fontWeight: FontWeight.bold, fontSize: 12),
+    style: TextStyle(color: Colors.purple.shade900, fontWeight: FontWeight.bold, fontSize: 15),
     ):Text("",
     style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
     ),

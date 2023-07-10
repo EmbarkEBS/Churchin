@@ -137,7 +137,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         if (response.statusCode == 200) {
           Map<String,dynamic> result=jsonDecode(decryption(response.body.toString().trim()).split("}")[0]+"}") as Map<String,dynamic>;
           if(result["status"]=="success"){
-           showAlertDialog(context, "Success", "Thanks for Offerings!");
+           showAlertDialog(context, "Success", "Thanks for your giving!");
 
           } else{
     showAlertDialog(context, "Failed", result["message"]);
@@ -167,7 +167,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
       paymentIntentRes = await stripe.api.retrievePaymentIntent(clientSecret);
     }catch(e){
       print("ERROR_CreatePaymentIntentAndSubmit: $e");
-      showAlertDialog(context, "Error", e.toString());
+      showAlertDialog(context, "Error", "Something went wrong.");
     }print(paymentIntentRes.toString());
     return paymentIntentRes;
   }
