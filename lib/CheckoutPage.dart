@@ -167,7 +167,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
       paymentIntentRes = await stripe.api.retrievePaymentIntent(clientSecret);
     }catch(e){
       print("ERROR_CreatePaymentIntentAndSubmit: $e");
-      showAlertDialog(context, "Error", "Something went wrong.");
+      showAlertDialog(context, "Error", e.toString());
     }print(paymentIntentRes.toString());
     return paymentIntentRes;
   }
