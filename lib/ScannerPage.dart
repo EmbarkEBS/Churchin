@@ -379,7 +379,7 @@ class _ScannerPageState extends State<ScannerPage> {
     }
   }
   _launchURL() async {
-    const url = 'https://churchinapp.com/privacypolicy';
+    const url = 'https://staging.churchinapp.com/privacypolicy';
     try {
       final uri = Uri.parse(url);
 

@@ -81,8 +81,9 @@ class _SignUpPageState extends State<SignUpPage> {
     'Married',
     'Unmarried',
   ];
-  String children = '0';
+  String children = 'No.Of Kids';
   var items3 = [
+    'No.Of Kids',
     '0',
     '1',
     '2',
@@ -796,7 +797,7 @@ class _SignUpPageState extends State<SignUpPage> {
     contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
     prefixIcon: Icon(Icons.calendar_today, color: Colors.orange,), //icon of text field
     // labelText: "Enter DOB",
-    hintText: "Enter Date",
+    hintText: "Enter Anniversary Date",
     fillColor: Colors.orange.shade50,
     filled: true,
     hintStyle: TextStyle(fontSize: 16.0, color: Colors.orange, fontWeight: FontWeight.bold),
@@ -862,6 +863,12 @@ class _SignUpPageState extends State<SignUpPage> {
     ),
     DropdownButtonFormField(
     value: children,
+      validator: (value) {
+        if (value == null || value=="No.Of Kids") {
+          return 'Please select no of kids';
+        }
+        return null;
+      },
     items: items3.map((String items) {
     return DropdownMenuItem(
     value: items,
@@ -1143,7 +1150,8 @@ class _SignUpPageState extends State<SignUpPage> {
     String formatted1 = formatter1.format(now);
     //print(formatted);
 
-    var url = 'https://staging.churchinapp.com/api/memberregister';
+    var url = 'https:'
+        '//staging.churchinapp.com/api/memberregister';
     final Map<String,String> data = {"entry_date":formatted,"entry_time":formatted1,
     "password":password,"name":fullname,"gender":dropdownvalue1,"dob":dateInput.text,"address":address,"city":city,"state":state_1,"pincode":postalcode,"country":country,"marital_status":marital,"wed_anniversary":anniversaryInput.text,"no_of_child":children,"email":email,"phone_no":phone,"occupation":occupation,"referred_by":referred_by};
     print("testing data"+data.toString());

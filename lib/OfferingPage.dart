@@ -519,7 +519,7 @@ class _OfferingPageState extends State<OfferingPage> {
 
   }
   _launchURL() async {
-    const url = 'https://churchinapp.com/privacypolicy';
+    const url = 'https://staging.churchinapp.com/privacypolicy';
     try {
       final uri = Uri.parse(url);
 

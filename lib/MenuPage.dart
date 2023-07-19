@@ -61,7 +61,7 @@ class _MenuPageState extends State<MenuPage> {
     user_id=sp.containsKey("user_id")?sp.getInt("user_id"):0;
   }
   _launchURL() async {
-    const url = 'https://churchinapp.com/privacypolicy';
+    const url = 'https://staging.churchinapp.com/privacypolicy';
     try {
       final uri = Uri.parse(url);
 
