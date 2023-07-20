@@ -75,15 +75,15 @@ class _SignUpPageState extends State<SignUpPage> {
     'Facebook',
     'Instagram',
   ];
-  String marital = '-';
+  String marital = 'Marital Status';
   var items2 = [
-    '-',
+    'Marital Status',
     'Married',
     'Unmarried',
   ];
-  String children = 'No.Of Kids';
+  String children = 'Number Of Kids';
   var items3 = [
-    'No.Of Kids',
+    'Number Of Kids',
     '0',
     '1',
     '2',
@@ -730,7 +730,7 @@ class _SignUpPageState extends State<SignUpPage> {
     DropdownButtonFormField(
     value: marital,
     validator: (value) {
-    if (value == null || value=="-") {
+    if (value == null || value=="Marital Status") {
     return 'Please enter valid Marital status';
     }
     return null;
@@ -797,7 +797,7 @@ class _SignUpPageState extends State<SignUpPage> {
     contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
     prefixIcon: Icon(Icons.calendar_today, color: Colors.orange,), //icon of text field
     // labelText: "Enter DOB",
-    hintText: "Enter Anniversary Date",
+    hintText: "Wedding Anniversary Date",
     fillColor: Colors.orange.shade50,
     filled: true,
     hintStyle: TextStyle(fontSize: 16.0, color: Colors.orange, fontWeight: FontWeight.bold),
@@ -864,8 +864,8 @@ class _SignUpPageState extends State<SignUpPage> {
     DropdownButtonFormField(
     value: children,
       validator: (value) {
-        if (value == null || value=="No.Of Kids") {
-          return 'Please select no of kids';
+        if (value == null || value=="Number Of Kids") {
+          return 'Please select number of kids';
         }
         return null;
       },
