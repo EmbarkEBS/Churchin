@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:webview_flutter/webview_flutter.dart';
 
 import 'helpers/encrypter.dart';
-String stripePublicKey = 'pk_test_51Lm3WYE19ITEKWtg9MN0eIb8Y2yG6h04zOHYdnSxRV6NgHnGm6upQRbQTfLH6bfZOu7k6dGLR0rk7NgA0BjlSoeK00ieYPz8bA';
+String stripePublicKey = 'pk_live_51NGp4pBJmqowkOrLAfVXxYf8iEVagYCWaQGmY8i2PqmVy6LCXTfhz3y371f4nxssDnOG8vZxAheIbCxVgPFlSqNk00pXqr8klx';
 
 class CheckoutPage extends StatefulWidget {
 
@@ -33,7 +33,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   Widget build(BuildContext context) {
      eventid = ModalRoute.of(context)!.settings.arguments as Map<String,dynamic>;
     final Stripe stripe = Stripe(
-    "pk_test_51Lm3WYE19ITEKWtg9MN0eIb8Y2yG6h04zOHYdnSxRV6NgHnGm6upQRbQTfLH6bfZOu7k6dGLR0rk7NgA0BjlSoeK00ieYPz8bA", //Your Publishable Key
+    "pk_live_51NGp4pBJmqowkOrLAfVXxYf8iEVagYCWaQGmY8i2PqmVy6LCXTfhz3y371f4nxssDnOG8vZxAheIbCxVgPFlSqNk00pXqr8klx", //Your Publishable Key
     stripeAccount: eventid["stripe_id"], //Merchant Connected Account ID. It is the same ID set on server-side.
     returnUrlForSca: "stripesdk://3ds.stripesdk.io", //Return URL for SCA
   );
@@ -88,7 +88,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     final Future<String> customerEmail = getCustomerEmail();
 
     if(!stripeCard.validateCVC()){showAlertDialog(context, "Error", "CVC not valid."); return;}
-    if(!stripeCard.validateDate()){showAlertDialog(context, "Errore", "Date not valid."); return;}
+    if(!stripeCard.validateDate()){showAlertDialog(context, "Error", "Date not valid."); return;}
     if(!stripeCard.validateNumber()){showAlertDialog(context, "Error", "Number not valid."); return;}
 
     Map<String, dynamic> paymentIntentRes = await createPaymentIntent(stripeCard, customerEmail.toString(),stripe);
@@ -112,7 +112,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
       String formatted1 = formatter1.format(now);
       //print(formatted);
       SharedPreferences sp=await SharedPreferences.getInstance();
-      var url = 'https://staging.churchinapp.com/api/givinggift';
+      var url = 'https://churchinapp.com/api/givinggift';
       final Map<String,String> data = {"offer_type":eventid["offer_type"],"offer_amt":eventid["offer_amt"], "entry_date":formatted,"entry_time":formatted1,"member_type":"5"
         ,'qrcode':eventid["value"],"user_id":sp.getInt("user_id").toString(),"payment_status":paymentIntentRes['status'],"payment_id":paymentIntentRes['payment_method']};
       print("testing data"+data.toString());
@@ -176,7 +176,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     String clientSecret="";
 
     SharedPreferences sp=await SharedPreferences.getInstance();
-    var url = 'https://staging.churchinapp.com/api/checkoutsession';
+    var url = 'https://churchinapp.com/api/checkoutsession';
     final Map<String,String> data = {"amount":sp.getString("amount")!,"account_id":eventid["stripe_id"],
       'payment_id':paymentMethodId,"email":sp.getString("email")!,"quantity":"1"};
     print("testing data"+data.toString());

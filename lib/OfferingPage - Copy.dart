@@ -372,7 +372,7 @@ class _OfferingPageState extends State<OfferingPage> {
     DateFormat formatter1 = DateFormat('jm');
     String formatted1 = formatter1.format(now);
     //print(formatted);
-    var url = 'https://staging.churchinapp.com/api/checkout-session?mobile=true&account_id=$eventid["stripe_id"]&amount=${_amnt}&title=${dropdownvalue1}&quantity=1&currency=USD';
+    var url = 'https://churchinapp.com/api/checkout-session?mobile=true&account_id=$eventid["stripe_id"]&amount=${_amnt}&title=${dropdownvalue1}&quantity=1&currency=USD';
     SharedPreferences sp=await SharedPreferences.getInstance();
 
     sp.setString("offering_type",_offerings);

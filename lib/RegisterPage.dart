@@ -166,7 +166,7 @@ class _RegisterPageState extends State<RegisterPage> {
               onTap: ()  async{
                 SharedPreferences sp=await SharedPreferences.getInstance();
 
-                var url = 'https://staging.churchinapp.com/api/userprofile';
+                var url = 'https://churchinapp.com/api/userprofile';
                 final Map<String,String> data = {"user_id":sp.getInt("user_id").toString()};
                 print("testing data"+data.toString());
                 /*  setState(()
@@ -531,7 +531,7 @@ class _RegisterPageState extends State<RegisterPage> {
     String formatted1 = formatter1.format(now);
     //print(formatted);
 
-    var url = 'https://staging.churchinapp.com/api/signinchildren';
+    var url = 'https://churchinapp.com/api/signinchildren';
     SharedPreferences sp=await SharedPreferences.getInstance();
     final Map<String,String> data = {"entry_date":formatted,"entry_time":formatted1,
     "user_id":sp.getInt("user_id").toString(),'qrcode':eventid["value"],"member_type":Helper.type.toString(),"name":fullname,"gender":_gender,"teacher":teacher,"class_group":classgroup};
@@ -712,7 +712,7 @@ class _RegisterPageState extends State<RegisterPage> {
               onTap: ()  async{
                 SharedPreferences sp=await SharedPreferences.getInstance();
 
-                var url = 'https://staging.churchinapp.com/api/userprofile';
+                var url = 'https://churchinapp.com/api/userprofile';
                 final Map<String,String> data = {"user_id":sp.getInt("user_id").toString()};
                 print("testing data"+data.toString());
                 /*  setState(()
@@ -1072,7 +1072,7 @@ class _RegisterPageState extends State<RegisterPage> {
     DateFormat formatter1 = DateFormat('jm');
     String formatted1 = formatter1.format(now);
     //print(formatted);
-    var url = 'https://staging.churchinapp.com/api/eventregister';
+    var url = 'https://churchinapp.com/api/eventregister';
     SharedPreferences sp=await SharedPreferences.getInstance();
 
     final Map<String,String> data = {"entry_date":formatted,"entry_time":formatted1,"user_id":sp.getInt("user_id").toString(),
@@ -1254,7 +1254,7 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
   _launchURL() async {
-    const url = 'https://staging.churchinapp.com/privacypolicy';
+    const url = 'https://churchinapp.com/privacypolicy';
     try {
       final uri = Uri.parse(url);
 

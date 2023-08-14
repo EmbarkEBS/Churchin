@@ -87,6 +87,16 @@ class _SignUpPageState extends State<SignUpPage> {
     '0',
     '1',
     '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12'
   ];
   final _formkey=GlobalKey<FormState>();
   bool showpwd=true;
@@ -1258,7 +1268,7 @@ class _SignUpPageState extends State<SignUpPage> {
       sp.setString("email", email);
       sp.setBool("resend", true);
       try{
-      var url = 'https://staging.churchinapp.com/api/resendotp';
+      var url = 'https://churchinapp.com/api/resendotp';
       final Map<String,String> data = {"email":email};
       final response = await http.post(Uri.parse(url),
       body: json.encode({"data":encryption(json.encode(data))}),

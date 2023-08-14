@@ -100,7 +100,7 @@ class _ChangePwdPageState extends State<ChangePwdPage> {
               onTap: ()  async{
                 SharedPreferences sp=await SharedPreferences.getInstance();
 
-                var url = 'https://staging.churchinapp.com/api/userprofile';
+                var url = 'https://churchinapp.com/api/userprofile';
                 final Map<String,String> data = {"user_id":sp.getInt("user_id").toString()};
                 print("testing data"+data.toString());
                 /*  setState(()
@@ -401,7 +401,7 @@ class _ChangePwdPageState extends State<ChangePwdPage> {
     ElevatedButton(
     onPressed: () async{
     if (_formkey_2.currentState!.validate()) {
-    var url = 'https://staging.churchinapp.com/api/changepassword';
+    var url = 'https://churchinapp.com/api/changepassword';
     SharedPreferences sp=await SharedPreferences.getInstance();
     var email=sp.getString("email");
     final Map<String,String> data = {

@@ -153,7 +153,7 @@ class _ForgotPwdPageState extends State<ForgotPwdPage> {
 
 
     //print(formatted);
-    var url = 'https://staging.churchinapp.com/api/forgotpassword';
+    var url = 'https://churchinapp.com/api/forgotpassword';
     final Map<String,String> data = {"email":email};
     print("testing data"+data.toString());
     /* setState(()

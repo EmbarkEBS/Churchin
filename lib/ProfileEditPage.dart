@@ -151,7 +151,7 @@ print("fbgnbgn"+widget.eventid.toString());
                   onTap: () async{
                     SharedPreferences sp=await SharedPreferences.getInstance();
 
-                    var url = 'https://staging.churchinapp.com/api/userprofile';
+                    var url = 'https://churchinapp.com/api/userprofile';
                     final Map<String,String> data = {"user_id":sp.getInt("user_id").toString()};
                     print("testing data"+data.toString());
                     /*  setState(()
@@ -1254,7 +1254,7 @@ print("fbgnbgn"+widget.eventid.toString());
     String formatted1 = formatter1.format(now);
     //print(formatted);
 
-    var url = 'https://staging.churchinapp.com/api/profileupdate';
+    var url = 'https://churchinapp.com/api/profileupdate';
     final Map<String,String> data = {"user_id":widget.results["appuser_id"],"entry_date":formatted,"entry_time":formatted1,
     "name":fullname,"teacher":"","class_group":"","gender":dropdownvalue1,"dob":dob,"address":address,"city":city,"state":state_1,"pincode":postalcode,"country":country,"marital_status":marital,"wed_anniversary":aod,"no_of_child":children,"email":email,"phone_no":phone,"occupation":occupation,"referred_by":referred_by};
     print("testing data"+data.toString());

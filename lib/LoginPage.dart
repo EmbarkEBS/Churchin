@@ -245,7 +245,7 @@ class _LoginPageState extends State<LoginPage> {
     DateFormat formatter1 = DateFormat('jm');
     String formatted1 = formatter1.format(now);
     //print(formatted);
-    var url = 'https://staging.churchinapp.com/api/memberlogin';
+    var url = 'https://churchinapp.com/api/memberlogin';
     final Map<String,String> data = {"entry_date":formatted,"entry_time":formatted1,
     "password":password,"email":email};
     print("testing data"+data.toString());
@@ -321,7 +321,7 @@ print(result.toString());
       sp.setBool("stay_signed", stay_signed);
       sp.setBool("resend", true);
     try{
-    var url = 'https://staging.churchinapp.com/api/resendotp';
+    var url = 'https://churchinapp.com/api/resendotp';
     final Map<String,String> data = {"email":email};
     final response = await http.post(Uri.parse(url),
     body: json.encode({"data":encryption(json.encode(data))}),

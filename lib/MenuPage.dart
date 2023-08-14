@@ -61,7 +61,7 @@ class _MenuPageState extends State<MenuPage> {
     user_id=sp.containsKey("user_id")?sp.getInt("user_id"):0;
   }
   _launchURL() async {
-    const url = 'https://staging.churchinapp.com/privacypolicy';
+    const url = 'https://churchinapp.com/privacypolicy';
     try {
       final uri = Uri.parse(url);
 
@@ -108,7 +108,7 @@ class _MenuPageState extends State<MenuPage> {
               onTap: () async{
                 SharedPreferences sp=await SharedPreferences.getInstance();
 
-    var url = 'https://staging.churchinapp.com/api/userprofile';
+    var url = 'https://churchinapp.com/api/userprofile';
     final Map<String,String> data = {"user_id":sp.getInt("user_id").toString()};
     print("testing data"+data.toString());
     /*  setState(()
@@ -357,7 +357,7 @@ class _MenuPageState extends State<MenuPage> {
     String formatted1 = formatter1.format(now);
     //print(formatted);
     SharedPreferences sp=await SharedPreferences.getInstance();
-    var url = 'https://staging.churchinapp.com/api/currentmember';
+    var url = 'https://churchinapp.com/api/currentmember';
     final Map<String,String> data = {"entry_date":formatted,"entry_time":formatted1,
     'qrcode':eventid["value"],"member_type":Helper.type.toString(),"user_id":sp.getInt("user_id").toString()};
     print("testing data"+data.toString());
@@ -460,7 +460,7 @@ class _MenuPageState extends State<MenuPage> {
     });
     print("entry mode"+entry_mode.toString());*/
 
-    var url = 'https://staging.churchinapp.com/api/currentmember';
+    var url = 'https://churchinapp.com/api/currentmember';
     final Map<String,String> data = {"entry_date":formatted,"entry_time":formatted1,
     'qrcode':eventid["value"],"member_type":Helper.type.toString(),"user_id":sp.getInt("user_id").toString()};
     print("testing data"+data.toString());
@@ -576,7 +576,7 @@ class _MenuPageState extends State<MenuPage> {
                           DateFormat formatter1 = DateFormat('jm');
                           String formatted1 = formatter1.format(now);
                           //print(formatted);
-                          var url = 'https://staging.churchinapp.com/api/eventregister';
+                          var url = 'https://churchinapp.com/api/eventregister';
                           SharedPreferences sp=await SharedPreferences.getInstance();
 
                           final Map<String,String> data = {"entry_date":formatted,"entry_time":formatted1,"user_id":sp.getInt("user_id").toString(),
@@ -656,7 +656,7 @@ class _MenuPageState extends State<MenuPage> {
                           String formatted1 = formatter1.format(now);
                           //print(formatted);
                           SharedPreferences sp=await SharedPreferences.getInstance();
-                          var url = 'https://staging.churchinapp.com/api/adminaccountinfo';
+                          var url = 'https://churchinapp.com/api/adminaccountinfo';
                           final Map<String,String> data = {"entry_date":formatted,"entry_time":formatted1,
                           'qrcode':eventid["value"],"user_id":sp.getInt("user_id").toString()};
                           print("testing data"+data.toString());

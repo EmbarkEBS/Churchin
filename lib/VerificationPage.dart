@@ -130,10 +130,10 @@ class _VerificationPageState extends State<VerificationPage> {
                   TextButton(onPressed: () async{
                     SharedPreferences sp=await SharedPreferences.getInstance();
                     var user_id=sp.containsKey("user_id")?sp.getInt("user_id"):0;                      //print(formatted);
-                    var url = 'https://staging.churchinapp.com/api/resendotp';
+                    var url = 'https://churchinapp.com/api/resendotp';
                     var email=sp.getString("email");
                     try{
-                      var url = 'https://staging.churchinapp.com/api/resendotp';
+                      var url = 'https://churchinapp.com/api/resendotp';
                       final Map<String,String> data = {"email":email.toString()};
                       final response = await http.post(Uri.parse(url),
                           body: json.encode({"data":encryption(json.encode(data))}),
@@ -204,8 +204,8 @@ class _VerificationPageState extends State<VerificationPage> {
                       String formatted1 = formatter1.format(now);
                       SharedPreferences sp=await SharedPreferences.getInstance();
                       var user_id=sp.containsKey("user_id")?sp.getInt("user_id"):0;                      //print(formatted);
-                      var url = 'https://staging.churchinapp.com/api/verifyotp';
-                      var email=sp.getString("email");
+                      var url = 'https://churchinapp.com/api/verifyotp';
+                        var email=sp.getString("email");
                       final Map<String,String> data = {"entry_date":formatted,"entry_time":formatted1,
                       "email":email.toString(),"otp":contrller1.text+contrller2.text+contrller3.text+contrller4.text,/*+contrller5.text+contrller6.text,*/"user_id":user_id!.toString()};
                       print("testing data"+data.toString());
