@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:webview_flutter/webview_flutter.dart';
 
 import 'helpers/encrypter.dart';
-String stripePublicKey = 'pk_live_51NGp4pBJmqowkOrLAfVXxYf8iEVagYCWaQGmY8i2PqmVy6LCXTfhz3y371f4nxssDnOG8vZxAheIbCxVgPFlSqNk00pXqr8klx';
+String stripePublicKey = 'pk_live_51Ng67tDQl3PE9TbWyjcnvsHu5WWLI6U58zj8z8XOgYFq9c7X9p8bku2SO4lY1WxF6kvxErbqVyudLoQKrmZYcHT600LJQQAqrP';
 
 class CheckoutPage extends StatefulWidget {
 
@@ -33,7 +33,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   Widget build(BuildContext context) {
      eventid = ModalRoute.of(context)!.settings.arguments as Map<String,dynamic>;
     final Stripe stripe = Stripe(
-    "pk_live_51NGp4pBJmqowkOrLAfVXxYf8iEVagYCWaQGmY8i2PqmVy6LCXTfhz3y371f4nxssDnOG8vZxAheIbCxVgPFlSqNk00pXqr8klx", //Your Publishable Key
+    "pk_live_51Ng67tDQl3PE9TbWyjcnvsHu5WWLI6U58zj8z8XOgYFq9c7X9p8bku2SO4lY1WxF6kvxErbqVyudLoQKrmZYcHT600LJQQAqrP", //Your Publishable Key
     stripeAccount: eventid["stripe_id"], //Merchant Connected Account ID. It is the same ID set on server-side.
     returnUrlForSca: "stripesdk://3ds.stripesdk.io", //Return URL for SCA
   );
