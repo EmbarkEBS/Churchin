@@ -22,7 +22,7 @@ import 'RegisterPage.dart';
 import 'ScannerPage.dart';
 import 'SignUpPage.dart';
 import 'helpers/helper.dart';
-import 'package:device_preview/device_preview.dart';
+//import 'package:device_preview/device_preview.dart';
 void main() {
 
   //WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
