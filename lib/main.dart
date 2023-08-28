@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:churchIn/VerificationPage.dart';
 import 'package:churchIn/utils/colors.dart';
 import 'package:churchIn/widgets/button_plain.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,12 +22,18 @@ import 'RegisterPage.dart';
 import 'ScannerPage.dart';
 import 'SignUpPage.dart';
 import 'helpers/helper.dart';
-
+import 'package:device_preview/device_preview.dart';
 void main() {
 
   //WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   //FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  runApp( AlfaApp());
+  runApp(
+    /*DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) =>  AlfaApp(),
+    )*/
+      AlfaApp(),
+  );
 }
 class AlfaApp extends StatelessWidget {
   AlfaApp({Key? key}) : super(key: key);
@@ -36,6 +43,9 @@ class AlfaApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp(
+      // useInheritedMediaQuery: true,
+      // locale: DevicePreview.locale(context),
+      // builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       title: 'Alfa',
       theme: ThemeData(
@@ -144,10 +154,59 @@ class _AlfaSplashScreenState extends State<AlfaSplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      resizeToAvoidBottomInset: true,
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SvgPicture.asset(
+                "assets/images/alfanewlogo.svg",
+                width: 300,
+                height: 300,
+              ),
+      Container(
+        width: 300,
+        height: 200,
+        child: OverflowBox(
+          alignment: Alignment.center,
+          minWidth: 435,
+          minHeight:438 ,
+          maxWidth: 500,
+          maxHeight: 510,
+          child: Container(
+            // padding: EdgeInsets.all(12.0),
+            child: SvgPicture.asset(
+              'assets/images/alfasplashperson.svg',
+              alignment: Alignment.bottomCenter,
+              fit: BoxFit.contain,
+              //allowDrawingOutsideViewBox: true,
+            ),
+          ),
+        ),
+      )
+            ],
+          )
+
+
+         /* Center(
+            child: Text(
+              'My App',
+              style: TextStyle(
+                fontSize: 24,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),*/
+        ],
+      ),
+      /*body: Container(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            SizedBox(height: 180,),
+            SizedBox(height: 120,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -185,6 +244,7 @@ class _AlfaSplashScreenState extends State<AlfaSplashScreen> {
                   child: SvgPicture.asset(
                     'assets/images/alfasplashperson.svg',
                     alignment: Alignment.bottomCenter,
+                    fit: BoxFit.contain,
                     //allowDrawingOutsideViewBox: true,
                   ),
                 ),
@@ -192,7 +252,7 @@ class _AlfaSplashScreenState extends State<AlfaSplashScreen> {
             ),
           ],
         ),
-      ),
+      ),*/
     );
   }
 }

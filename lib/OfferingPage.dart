@@ -83,7 +83,7 @@ class _OfferingPageState extends State<OfferingPage> {
     final eventid = ModalRoute.of(context)!.settings.arguments as Map<String,dynamic>;
     print("ddddddd"+eventid.toString());
     return  Scaffold(
-        resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: true,
         appBar: AppBar(
           //centerTitle: true,
           title: const Text(

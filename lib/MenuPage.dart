@@ -76,7 +76,7 @@ class _MenuPageState extends State<MenuPage> {
   Widget build(BuildContext context) {
     Map<String,dynamic>  eventid = ModalRoute.of(context)!.settings.arguments as Map<String,dynamic>;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         //centerTitle: true,
         title: const Text(

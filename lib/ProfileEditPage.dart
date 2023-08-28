@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'RegisterPage.dart';
 import 'helpers/encrypter.dart';
 
 class ProfileEditPage extends StatefulWidget {
@@ -108,7 +109,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
     //final eventid = ModalRoute.of(context)!.settings.arguments as Map<String,dynamic>;
 print("fbgnbgn"+widget.eventid.toString());
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         //centerTitle: true,
         title: const Text(
@@ -1339,6 +1340,24 @@ print("fbgnbgn"+widget.eventid.toString());
                       ),// NEW
                     ),
                   ),
+                 ElevatedButton(
+                     onPressed: (){
+                      /* var url = 'https://churchinapp.com/api/deleteaccount';
+                       final Map<String,String> data = {"user_id":widget.results["appuser_id"],};
+                       print("testing data"+data.toString());
+                       Map<String,String> dat={"data":encryption(json.encode(data))};
+                       print("testing data"+dat.toString());*/
+                       _showConfirmationDialog();
+                     },
+                     child: Text('Delete Account'),
+                   style: ElevatedButton.styleFrom(
+                     primary: Colors.redAccent,
+                     minimumSize: Size(150, 40),
+                     shape: RoundedRectangleBorder( //to set border radius to button
+                         borderRadius: BorderRadius.circular(10)
+                     ),// NEW
+                   ),
+                 )
                  /* ElevatedButton(onPressed: (){
                     *//*final Map<String,String> data = {"entry_date":formatted,"entry_time":formatted1,
     'qrcode':eventid["value"],"member_type":Helper.type.toString(),"name":fullname,"gender":dropdownvalue1,"dob":dateInput.text,"address":address,"city":city,"state":state_1,"pincode":postalcode,"country":country,"marital_status":marital,"wed_anniversary":anniversaryInput.text,"no_of_child":children,"email":email,"phone_no":phone,"occupation":occupation};
@@ -1380,4 +1399,91 @@ print("fbgnbgn"+widget.eventid.toString());
       )),
     );
   }
+   _showConfirmationDialog() async {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Confirm Deletion'),
+          content: Text('Are you sure you want to delete this user account?'),
+          actions: <Widget>[
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              style: ElevatedButton.styleFrom(primary: Colors.green),
+              child: Text('Cancel', style: TextStyle(color: Colors.white),),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                //Navigator.of(context).pop();
+                var url = 'https://churchinapp.com/api/deleteaccount';
+                final Map<String,String> data = {"user_id":widget.results["appuser_id"],};
+                print("testing data"+data.toString());
+                Map<String,String> dat={"data":encryption(json.encode(data))};
+                print("testing data"+dat.toString());
+                try{
+                  final response = await http.post(Uri.parse(url),
+                      body: json.encode(dat),
+                      headers:{
+                        "CONTENT-TYPE":"application/json"
+                      }).timeout(const Duration(seconds: 20));/*setState(() {
+    vaue.text=decryption(response.body.toString().trim()).split("}")[0]+"}hai";
+    });*/
+                  print(response.statusCode.toString()+"dadada");
+                  if (response.statusCode == 200) {
+                    Map<String, dynamic> result = jsonDecode(decryption(response.body.toString().trim()).split("}")[0] + "}") as Map<String, dynamic>;
+                    print(result.toString() + "bfbfb");
+                    SharedPreferences sp=await SharedPreferences.getInstance();
+                    sp.setInt("user_id",0);
+                    sp.clear();
+                    //Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterPage()));
+                 //  Navigator.pushNamed(context, "/signup");
+
+                    Navigator.of(context).pushNamedAndRemoveUntil("/signup",(route) => route.isFirst);
+                    showDialog(context: context,
+                        builder: (BuildContext context){
+                          return  AlertDialog(
+                            actionsAlignment: MainAxisAlignment.center,
+                            content: const Text("Account Deleted Successfully",style: TextStyle(fontSize:16,fontWeight: FontWeight.bold)),
+                            contentPadding: EdgeInsets.all(30),
+                            actions: [
+                              ElevatedButton(
+                                onPressed: (){
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text("OK", style: TextStyle(color: Colors.white,fontSize:16,fontWeight: FontWeight.bold),),
+                                style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder( //to set border radius to button
+                                    borderRadius: BorderRadius.circular(10)
+                                ),backgroundColor: Colors.orange),)
+                            ],
+                          );
+                        }
+                    );
+                   // _didPushButton();
+                  }
+                }on TimeoutException catch (_) {
+                  setState((){
+                    successtxt="";
+                    errtxt="Please Check your Internet Connection And data - 5";
+                  });
+                  //return false;
+                }on Exception catch(e){
+                  setState((){
+                    errtxt=e.toString();
+                    successtxt="";
+
+                  });
+
+                }// Close the dialog
+              },
+              style: ElevatedButton.styleFrom(primary: Colors.redAccent),
+              child: Text('Delete',style: TextStyle(color: Colors.white),),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
 }

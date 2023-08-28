@@ -124,7 +124,7 @@ class _RegisterPageState extends State<RegisterPage> {
     if(Helper.type=="2"){
 
     return  Scaffold(
-    resizeToAvoidBottomInset: false,
+    resizeToAvoidBottomInset: true,
     appBar: AppBar(
       //centerTitle: true,
       title: const Text(
@@ -670,7 +670,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
     }else {
     return  Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         //centerTitle: true,
         title: const Text(

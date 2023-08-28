@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-    resizeToAvoidBottomInset: false,
+    resizeToAvoidBottomInset: true,
     body:  SingleChildScrollView(
     child: Container(
     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
@@ -429,7 +429,6 @@ print(result.toString());
         ),),
       ],
     ),
-
     /*ElevatedButton(
         onPressed: (){
           Navigator.pushNamed(context, "/signup");

@@ -103,7 +103,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
      return Scaffold(
-    resizeToAvoidBottomInset: false,
+    resizeToAvoidBottomInset: true,
     body: SingleChildScrollView(
     child: Container(
     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 50),
@@ -1161,7 +1161,7 @@ class _SignUpPageState extends State<SignUpPage> {
     //print(formatted);
 
     var url = 'https:'
-        '//staging.churchinapp.com/api/memberregister';
+        '//churchinapp.com/api/memberregister';
     final Map<String,String> data = {"entry_date":formatted,"entry_time":formatted1,
     "password":password,"name":fullname,"gender":dropdownvalue1,"dob":dateInput.text,"address":address,"city":city,"state":state_1,"pincode":postalcode,"country":country,"marital_status":marital,"wed_anniversary":anniversaryInput.text,"no_of_child":children,"email":email,"phone_no":phone,"occupation":occupation,"referred_by":referred_by};
     print("testing data"+data.toString());
@@ -1207,8 +1207,8 @@ class _SignUpPageState extends State<SignUpPage> {
     anniversaryInput.clear();
     dropdownvalue1='Gender';
     //state_1="";
-    marital="-";
-    children="0";
+    marital="Marital Status";
+    children="Number Of Kids";
 
     });
       //}else
@@ -1243,8 +1243,8 @@ class _SignUpPageState extends State<SignUpPage> {
       anniversaryInput.clear();
       dropdownvalue1='Gender';
       //state_1="";
-      marital="-";
-      children="0";
+      marital="Marital Status";
+      children="Number Of Kids";
 
       });
       //Navigator.pushNamed(context,"/verification");
@@ -1375,8 +1375,8 @@ class _SignUpPageState extends State<SignUpPage> {
     anniversaryInput.clear();
     dropdownvalue1='Gender';
     //state_1="";
-    marital="-";
-    children="0";
+    marital="Marital Status";
+    children="Number Of Kids";
     });
     }, child: Text(
     "Reset",

@@ -41,7 +41,7 @@ class _ForgotPwdPageState extends State<ForgotPwdPage> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-    resizeToAvoidBottomInset: false,
+    resizeToAvoidBottomInset: true,
     body:  SingleChildScrollView(
     child: Container(
     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
