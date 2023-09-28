@@ -69,7 +69,8 @@ class _ScannerPageState extends State<ScannerPage> {
         MediaQuery.of(context).size.height < 400)
         ? 280.0
         : 300.0;
-    return Scaffold(
+    return SafeArea(
+      child:Scaffold(
         /*appBar: AppBar(
         title: Text('Scanning'),
     actions: <Widget>[
@@ -312,7 +313,8 @@ class _ScannerPageState extends State<ScannerPage> {
             ],
           ),
         )
-    ));
+    ))
+    );
   }
   /*Widget _buildQrView(BuildContext context) {
     // For this example we check how width or tall the device is and change the scanArea and overlay accordingly.

@@ -6,6 +6,7 @@ import 'package:churchIn/widgets/button_plain.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:simple_splashscreen/simple_splashscreen.dart';
 //import 'package:splash_view/splash_view.dart';
@@ -23,13 +24,21 @@ import 'ScannerPage.dart';
 import 'SignUpPage.dart';
 import 'helpers/helper.dart';
 //import 'package:device_preview/device_preview.dart';
+//import 'package:device_preview_screenshot/device_preview_screenshot.dart';
+
+//import 'package:screenshot_modes/screenshot_modes.dart';
 void main() {
 
   //WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   //FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(
+
     /*DevicePreview(
-      enabled: !kReleaseMode,
+      enabled: true,
+      tools: [
+        ...DevicePreview.defaultTools,
+        const DevicePreviewScreenshot(),
+      ],
       builder: (context) =>  AlfaApp(),
     )*/
       AlfaApp(),
@@ -43,9 +52,9 @@ class AlfaApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp(
-      // useInheritedMediaQuery: true,
-      // locale: DevicePreview.locale(context),
-      // builder: DevicePreview.appBuilder,
+       // useInheritedMediaQuery: true,
+       // locale: DevicePreview.locale(context),
+       // builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       title: 'Alfa',
       theme: ThemeData(

@@ -77,6 +77,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
     '1',
     '2',
   ];
+
   final _formkey=GlobalKey<FormState>();
   bool _loading = true;
 
@@ -260,7 +261,7 @@ print("fbgnbgn"+widget.eventid.toString());
                 ) ,
                 SizedBox(height: 10,),
                 //Image(image: AssetImage('assets/images/UA_170_Logo.png'),width: 200,),
-                Text('Registration',
+                Text('My Profile',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,

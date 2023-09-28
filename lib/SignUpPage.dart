@@ -75,12 +75,21 @@ class _SignUpPageState extends State<SignUpPage> {
     'Facebook',
     'Instagram',
   ];
-  String marital = 'Marital Status';
-  var items2 = [
-    'Marital Status',
+  //String marital = 'Marital Status';
+  String? marital ;
+  List<String> items2 = ['Married', 'Unmarried'];
+  String? selectedOption;
+  List<String> options = [
     'Married',
     'Unmarried',
+    // Add more options as needed
   ];
+
+  /*var items2 = [
+    //'Marital Status',
+    'Married',
+    'Unmarried',
+  ];*/
   String children = 'Number Of Kids';
   var items3 = [
     'Number Of Kids',
@@ -266,18 +275,18 @@ class _SignUpPageState extends State<SignUpPage> {
     height: 15,
     ),
     TextFormField(
-    validator: (value) {
+    /*validator: (value) {
     if (value == null || value.isEmpty) {
     return 'Please enter date of birth';
     }
     return null;
-    },
+    },*/
     controller: dateInput,
     decoration: InputDecoration(
     contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
     prefixIcon: Icon(Icons.calendar_today, color: Colors.orange,), //icon of text field
     // labelText: "Enter DOB",
-    hintText: "Enter DOB",
+    hintText: "Enter DOB(Optional)",
     fillColor:Colors.orange.shade50,
     filled: true,
     //labelStyle: TextStyle(fontSize: 15,color: Colors.blue),
@@ -342,12 +351,12 @@ class _SignUpPageState extends State<SignUpPage> {
     height: 15,
     ),
     TextFormField(
-    validator: (value) {
+    /*validator: (value) {
     if (value == null || value.isEmpty) {
     return 'Please enter Address';
     }
     return null;
-    },
+    },*/
     controller: _addresscontroller,
     keyboardType: TextInputType.multiline,
     textInputAction: TextInputAction.newline,
@@ -357,7 +366,7 @@ class _SignUpPageState extends State<SignUpPage> {
     contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
     prefixIcon: Icon(Icons.notes,color: Colors.orange,),
     //labelText: "Address",
-    hintText: "Enter Address",
+    hintText: "Enter Address(Optional)",
     fillColor: Colors.orange.shade50,
     filled: true,
     // labelStyle: TextStyle(fontSize: 15,color: Colors.blue),
@@ -737,25 +746,80 @@ class _SignUpPageState extends State<SignUpPage> {
     SizedBox(
     height: 15,
     ),
-    DropdownButtonFormField(
-    value: marital,
-    validator: (value) {
-    if (value == null || value=="Marital Status") {
-    return 'Please enter valid Marital status';
-    }
-    return null;
-    },
-    items: items2.map((String items) {
-    return DropdownMenuItem(
-    value: items,
-    child: Text(items),
-    );
-    }).toList(),
-    onChanged: (String? newValue) {
-    setState(() {
-    marital = newValue!;
-    });
-    },
+
+      DropdownButtonFormField<String>(
+        value: selectedOption, // Set the selected value
+        items: [
+          DropdownMenuItem<String>(
+            value: null, // Set the value as null for the default item
+            child: Text('Marital Status(Optional)',style: TextStyle(fontSize: 16.0, color: Colors.orange,fontWeight: FontWeight.bold),),
+          ),
+          ...options.map((option) {
+            return DropdownMenuItem<String>(
+              value: option,
+              child: Text(option),
+            );
+          }),
+        ],
+        onChanged: (value) {
+          setState(() {
+            selectedOption = value; // Update the selected value
+          });
+        },
+        decoration: InputDecoration(
+            contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+            prefixIcon: Icon(Icons.person, color: Colors.orange,),
+            fillColor: Colors.orange.shade50,
+            filled: true,
+
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16),
+              borderSide: BorderSide(
+                color: Colors.orange,
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16),
+              borderSide: BorderSide(
+                color: Colors.deepOrange.shade200,
+                width: 1.0,
+              ),
+            ),
+            errorBorder: new OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16),
+              borderSide: BorderSide(
+                color: Colors.red.shade200,
+                width: 1.0,
+              ),
+            ),
+            focusedErrorBorder: new OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16),
+              borderSide: BorderSide(
+                color: Colors.red.shade200,
+                width: 1.0,
+              ),
+            )
+        ),
+      ),
+    /*DropdownButtonFormField(
+      value: marital,
+      validator: (value) {
+        if (value == null || value=="Marital Status") {
+          return 'Please enter valid Marital status';
+        }
+        return null;
+      },
+      items: items2.map((String items) {
+        return DropdownMenuItem(
+          value: items,
+          child: Text(items),
+        );
+      }).toList(),
+      onChanged: (String? newValue) {
+        setState(() {
+          marital = newValue!;
+        });
+      },
     decoration: InputDecoration(
     contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
     prefixIcon: Icon(Icons.person, color: Colors.orange,),
@@ -790,7 +854,7 @@ class _SignUpPageState extends State<SignUpPage> {
     ),
     )
     ),
-    ),
+    ),*/
     SizedBox(
     height: 15,
     ),
@@ -937,7 +1001,7 @@ class _SignUpPageState extends State<SignUpPage> {
     prefixIcon: Icon(Icons.phone, color: Colors.orange,
     ),
     //labelText: "Email",
-    hintText: "Enter Phone",
+    hintText: "Enter Phone(Optional)",
     fillColor: Colors.orange.shade50,
     filled: true,
     //labelStyle: TextStyle(fontSize: 15,color: Colors.blue),
@@ -1163,7 +1227,7 @@ class _SignUpPageState extends State<SignUpPage> {
     var url = 'https:'
         '//churchinapp.com/api/memberregister';
     final Map<String,String> data = {"entry_date":formatted,"entry_time":formatted1,
-    "password":password,"name":fullname,"gender":dropdownvalue1,"dob":dateInput.text,"address":address,"city":city,"state":state_1,"pincode":postalcode,"country":country,"marital_status":marital,"wed_anniversary":anniversaryInput.text,"no_of_child":children,"email":email,"phone_no":phone,"occupation":occupation,"referred_by":referred_by};
+    "password":password,"name":fullname,"gender":dropdownvalue1,"dob":dateInput.text,"address":address,"city":city,"state":state_1,"pincode":postalcode,"country":country,"marital_status":selectedOption.toString(),"wed_anniversary":anniversaryInput.text,"no_of_child":children,"email":email,"phone_no":phone,"occupation":occupation,"referred_by":referred_by};
     print("testing data"+data.toString());
     /*  setState(()
         {
@@ -1209,7 +1273,8 @@ class _SignUpPageState extends State<SignUpPage> {
     //state_1="";
     marital="Marital Status";
     children="Number Of Kids";
-
+    referred_by="Referred By";
+    selectedOption=null;
     });
       //}else
       Future.delayed(const Duration(milliseconds: 1000), () {

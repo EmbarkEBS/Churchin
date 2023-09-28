@@ -77,6 +77,7 @@ class _MenuPageState extends State<MenuPage> {
     Map<String,dynamic>  eventid = ModalRoute.of(context)!.settings.arguments as Map<String,dynamic>;
     return Scaffold(
       resizeToAvoidBottomInset: true,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         //centerTitle: true,
         title: const Text(

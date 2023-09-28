@@ -45,7 +45,7 @@ class FieldValidator{
       return null;
   }
   static String? validateMobile(String value){
-    if(value.isEmpty)return 'Please Enter Mobile Number';
+    if(value.isEmpty)return null;
     final RegExp regex=
     RegExp(r'^(?:[+0]9)?[0-9]{10}$');
     if(!regex.hasMatch(value))

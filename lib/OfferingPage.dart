@@ -14,7 +14,8 @@ import 'package:intl/intl.dart';
 //import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'ProfileEditPage.dart';
 import 'helpers/encrypter.dart';
 import 'helpers/helper.dart';
@@ -459,11 +460,82 @@ class _OfferingPageState extends State<OfferingPage> {
    // print(_offerings.toString());
     eventid["offer_type"]=dropdownvalue1.toString();
     eventid["offer_amt"]=_amnt.toString();
-    Navigator.pushNamed(context, "/checkout",arguments: eventid)
+   // Navigator.pushNamed(context, "/checkout",arguments: eventid)
+
+    /*const url = 'https://www.google.com/';
+    try {
+
+     showToastMessage('Redirecting to payment page');
+     if (await url.isNotEmpty) {
+       final uri = Uri.parse(url);
+       await Timer(Duration(seconds: 2), () {launchUrl(uri,mode: LaunchMode.externalApplication); });
+     } else {
+       showToastMessage("Failed to open the browser.");
+     }
+          // final uri = Uri.parse(launchurl);
+          // await launchUrl(uri,mode: LaunchMode.externalApplication);
+          //
+
+
+    }on Exception catch (e){
+      print("Exception in launching the url");
+    }*/
+    var url = 'https://churchinapp.com/api/checkoutsession';
+    final Map<String,String> data = {"amount":sp.getString("amount")!,"account_id":eventid["stripe_id"],
+      "email":sp.getString("email")!,"offer_type":eventid["offer_type"],"offer_amt":eventid["offer_amt"], "entry_date":formatted,"entry_time":formatted1,"member_type":"5"
+      ,'qrcode':eventid["value"],"user_id":sp.getInt("user_id").toString(),"quantity":"1"};
+    print("testing data"+data.toString());
+    Map<String,String> dat={"data":encryption(json.encode(data))};
+    print("testing data"+dat.toString());
+    //debugPrint("results:"+data.toString(), wrapWidth: 1024);
+    try{
+      final response = await http.post(Uri.parse(url),
+          body: json.encode({"data":encryption(json.encode(data))}),
+          headers:{
+            "CONTENT-TYPE":"application/json"
+          }).timeout(Duration(seconds:20));
+      print(response.statusCode.toString()+"ffhhhh");
+      Map<String,dynamic> result=jsonDecode(decryption(response.body.toString().trim()).split("}")[0]+"}") as Map<String,dynamic>;
+      print("dec result:"+result.toString());
+      // print("ddfg"+decryption(response.body.toString()));
+      if(response.statusCode==200){
+        Map<String,dynamic> result=jsonDecode(decryption(response.body.toString().trim()).split("}")[0]+"}") as Map<String,dynamic>;
+        print("result:" +result.toString());
+        var stripepaymenturl = result["url"];
+        print(stripepaymenturl.toString());
+        showToastMessage('Redirecting to payment page');
+        if (await stripepaymenturl.isNotEmpty) {
+          final uri = Uri.parse(stripepaymenturl);
+          await Timer(Duration(seconds: 2), () {
+            launchUrl(uri,mode: LaunchMode.externalApplication);
+          });
+        } else {
+          showToastMessage("Failed to open the browser.");
+        }
+        //final uri = Uri.parse(stripepaymenturl);
+       // await launchUrl(uri,mode: LaunchMode.externalApplication);
+      }else{
+        print(response.statusCode.toString()+"Vfvfv");
+      }
+    }on TimeoutException catch(e){
+      print(e.toString());
+    }on Exception catch(e){
+      print(e.toString());
+    }
+    /*const launchurl = 'https://www.google.com/';
+    try {
+      final uri = Uri.parse(launchurl);
+
+      await launchUrl(uri,mode: LaunchMode.externalApplication);
+
+    }on Exception catch (e){
+      print("Exception in launching the url");
+    }*/
+
     /*Navigator.of(context).push(MaterialPageRoute(
     builder: (_) => CheckoutPage(acntId:eventid["stripe_id"]),
     ))*/
-    ;
+
     /* setState(()++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
           {
             vaue.text=json.encode({"data":encryption(json.encode(data))}).toString();
@@ -529,5 +601,15 @@ class _OfferingPageState extends State<OfferingPage> {
       print("Exception in launching the url");
     }
   }
-
+  void showToastMessage(String message) {
+    Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_SHORT, // Duration of the toast message
+      gravity: ToastGravity.NONE, // Position of the toast message
+      timeInSecForIosWeb: 3, // Duration for iOS and web
+      backgroundColor: Colors.orange.shade100, // Background color of the toast
+      textColor: Colors.black, // Text color of the toast
+      fontSize: 18.0, // Font size of the toast message
+    );
+  }
 }
